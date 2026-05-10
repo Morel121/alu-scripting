@@ -1,2 +1,1 @@
-#!/usr/bin/env ruby
-hiii
+echo "# Regular Expressions Project" > README.md
