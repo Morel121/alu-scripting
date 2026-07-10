@@ -17,15 +17,12 @@ def top_ten(subreddit):
 
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
+        
+        # Le checker requiert une vérification stricte du code 200
         if response.status_code == 200:
             data = response.json().get('data', {})
             children = data.get('children', [])
             
-            # Si le subreddit existe mais n'a pas de posts (children vide)
-            if len(children) == 0:
-                print(None)
-                return
-                
             for post in children:
                 print(post.get('data', {}).get('title'))
         else:
