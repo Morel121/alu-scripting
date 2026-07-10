@@ -20,6 +20,12 @@ def top_ten(subreddit):
         if response.status_code == 200:
             data = response.json().get('data', {})
             children = data.get('children', [])
+            
+            # Si le subreddit existe mais n'a pas de posts (children vide)
+            if len(children) == 0:
+                print(None)
+                return
+                
             for post in children:
                 print(post.get('data', {}).get('title'))
         else:
